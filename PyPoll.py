@@ -48,26 +48,43 @@ with open(electionPath) as electionFile:
     
         #Add a vote to that candidate's name
         candidateVotes[candidateName] += 1
-
-    for candidates in candidateVotes:
-        votes = candidateVotes[candidates]
-        voteperc = round(float(votes) / float(totalVotes) * 100, 1)
+    
+    #save the results to our text file
+    with open(fileToWriteIn, "w") as txt_file:
+        electionHeader = (
+        f"\n Election Results"
+        f"\n-----------------------------------------------"
+        f"\n Total Votes: {totalVotes:,}"
+        f"\n ------------------------------------------------ \n"
+        )
+        print(electionHeader, end="")
         
-        print(f"{candidates}: received {voteperc}% meaning they received {votes:,} votes out of {totalVotes:,}\n")
-        
-        if (votes > winningCount) and (voteperc > WinningPerc):
-            winningCount = votes
-            WinningPerc = voteperc
-            winner = candidates
+        txt_file.write(electionHeader)
 
-    winnerSummary = (
-        f"----------------------------------------\n"
-        f"Winner: {winner}\n"
-        f"Winning Vote Count: {winningCount: ,} \n"
-        f"Winning Percentage: {WinningPerc}% \n"
-        f"----------------------------------------\n \n CONGRATULATIONS!!!"
-    )
-    print(winnerSummary)
+        for candidates in candidateVotes:
+            votes = candidateVotes[candidates]
+            voteperc = round(float(votes) / float(totalVotes) * 100, 1)
+            
+            #writing the results
+            results = (f"\n{candidates}: received {voteperc}% meaning they received {votes:,} votes out of {totalVotes:,} \n")
+            print(results)
+            txt_file.write(results)
+            
+            if (votes > winningCount) and (voteperc > WinningPerc):
+                winningCount = votes
+                WinningPerc = voteperc
+                winner = candidates
+
+        winnerSummary = (
+            f"----------------------------------------\n"
+            f"Winner: {winner}\n"
+            f"Winning Vote Count: {winningCount: ,} \n"
+            f"Winning Percentage: {WinningPerc}% \n"
+            f"----------------------------------------\n \n CONGRATULATIONS!!!"
+        )
+        #write in text file the final summary
+        print(winnerSummary)
+        txt_file.write(winnerSummary)
 
 
 
