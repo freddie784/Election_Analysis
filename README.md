@@ -1,3 +1,4 @@
+
 # Election_Analysis
 ## Overview and Purpose of the Election Analysis
 I was given the task of auditing an election for a state election commission. They wanted me to calculate the candidate's votes along with the percentage of total votes that they won. I was also tasked with counting the amount of votes that were submitted in each county as well as their percentage in relation to the total. The purpose of this was to find out who won the election and their statistics. Also the commission wanted to see the breakdown of which county the votes were coming from.
@@ -6,13 +7,17 @@ I was given the task of auditing an election for a state election commission. Th
 
 - How many votes were cast
 
-***insert picture***
-    - This was found with a loop that referred to a variable called total_votes that was set to zero and for every row that had voting information it was increased by one. Below is the code that ran in the loop that went through each row counting the total votes
-    > total_votes = total_votes += 1
-- Breakdown of votes per county
-***insert picture***
+<img width="214" alt="Screen Shot 2021-07-21 at 11 48 59 PM" src="https://user-images.githubusercontent.com/83510059/126587703-046d56f4-c8be-40a4-b1cc-303c7de3cefe.png">
 
-    - This was done by creating a dictionary to keep counties as keys and number of votes in counties as the values. Then a loop was ran indexing the county names in the data file and each time the county name was seen it activated the key in the previously made dictionary and increased the value by one **See Below**
+
+- This was found with a loop that referred to a variable called total_votes that was set to zero and for every row that had voting information it was increased by one. Below is the code that ran in the loop that went through each row counting the total votes
+    ***total_votes = total_votes += 1***
+
+- Breakdown of votes per county
+
+<img width="204" alt="Screen Shot 2021-07-21 at 11 45 07 PM" src="https://user-images.githubusercontent.com/83510059/126587996-cd4a4465-bae3-4d4a-8fe2-659ef4b96274.png">
+
+   - This was done by creating a dictionary to keep counties as keys and number of votes in counties as the values. Then a loop was ran indexing the county names in the data file and each time the county name was seen it activated the key in the previously made dictionary and increased the value by one **See Below**
 
           if countyName not in countyList:
 
@@ -38,11 +43,16 @@ I was given the task of auditing an election for a state election commission. Th
                 BCounty = countyName
                 BCountyCount = totalCounty
 - Breakdown of votes per candidate
-    ***Insert Picture***
-    - This was done the same way that votes per county except done for candidates
+ 
+<img width="303" alt="Screen Shot 2021-07-21 at 11 46 13 PM" src="https://user-images.githubusercontent.com/83510059/126587568-26439110-b136-41c8-b83f-0bd28245f39f.png">
+
+   This was done the same way that votes per county except done for candidates
+   
 - Winner's votes statistics
-    ***Insterpicture***
-    - This was done using an fstring and formatting. Below is the fstring formatting
+
+<img width="210" alt="Screen Shot 2021-07-21 at 11 46 22 PM" src="https://user-images.githubusercontent.com/83510059/126587612-495ff2f7-7bdb-4ceb-9481-232c63ce854e.png">
+
+   - This was done similarly to finding the county with the most votes except there were two more variables to find being, winning count and winning percentage. The results were displayed and formatted using a fstring. ***See Below***
 
             f"-------------------------\n"
             f"Winner: {winning_candidate}\n"
